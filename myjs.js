@@ -14,9 +14,8 @@ function getQuery() {
     //http://localhost/ensayoPHP/formSimple/accion.php?nombre=Jenny&edad=23
 
     var url = "http://localhost/ensayoPHP/formSimple/accion.php" + query;
-    var url2 = "http://localhost/ensayoPHP/formSimple/data1.txt";
 
-    getRequest2(url);
+    getRequest(url);
 }
 
 function getRequest(url) {
@@ -30,9 +29,17 @@ function getRequest(url) {
 
         httpRequest.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                let data = this.responseText;
+                let data = JSON.parse(this.responseText);
 
-                document.getElementById("display").innerHTML = data;
+                //document.getElementById("display").innerHTML = data;
+                var output = "<table><tr><th>Name</th><th>Age</th></tr>"
+                for (var i = 0; i < data.length; i++) {
+                    output += "<tr><td>" + data[i].name + "</td><td>" + data[i].age + "</td>"
+                }
+
+
+                output += "</table";
+                document.getElementById('display').innerHTML = output;
             }
         };
         httpRequest.open("GET", url, true);
