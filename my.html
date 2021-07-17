@@ -5,17 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="myjs.js"></script>
+
 </head>
 
 <body>
-    <form id="myForm" action="accion.php" method="GET" target="_self">
+    <form id="myForm" action="accion.php" method="GET">
         <p>Su nombre: <input type="text" id="nombre" name="nombre" /></p>
         <p>Su edad: <input type="text" id="edad" name="edad" /></p>
-        <p><input id="myBtn" type="submit" onclick="getQuery()" /></p>
+        <p><input id="myBtn" type="submit" value="submit" /></p>
     </form>
     <div id="display"></div>
 
+    <script src="myjs.js"></script>
 </body>
 
 </html>

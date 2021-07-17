@@ -4,7 +4,7 @@
 }); */
 
 function getQuery() {
-    event.preventDefault();
+
     let name = document.getElementById("nombre").value;
     name = name.trim();
     let age = document.getElementById("edad").value;
@@ -14,7 +14,8 @@ function getQuery() {
     //http://localhost/ensayoPHP/formSimple/accion.php?nombre=Jenny&edad=23
 
     var url = "http://localhost/ensayoPHP/formSimple/accion.php" + query;
-    //var url = "accion.php" + query;
+    var url2 = "http://localhost/ensayoPHP/formSimple/data1.txt";
+
     getRequest2(url);
 }
 
@@ -45,6 +46,7 @@ const getRequest2 = async(url) => {
         const resp = await fetch(url)
         const data = await resp.json()
         console.log(data.length)
+        console.log(data)
             //document.getElementById('display').innerHTML = data.name;
         var output = "<table><tr><th>Name</th><th>Age</th></tr>"
         for (var i = 0; i < data.length; i++) {
@@ -54,7 +56,26 @@ const getRequest2 = async(url) => {
 
         output += "</table";
         document.getElementById('display').innerHTML = output;
+
     } catch (e) {
         console.log(e)
     }
 }
+
+const getRequest3 = async(url) => {
+    try {
+        const resp = await fetch(url)
+        const data = await resp.json()
+
+        console.log(data)
+
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+let myBtn = document.getElementById("myBtn")
+myBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    getQuery()
+});
